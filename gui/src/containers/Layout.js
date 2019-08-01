@@ -16,6 +16,7 @@ export class CustomLayout extends Component {
     render() {
         return (
             <div>
+                {`${process.env.NODE_ENV}`}
                 <Layout className="layout">
                     <Header>
                         <Navbar isAuth={this.props.isAuthenticated} />

@@ -134,11 +134,11 @@ module.exports = function (env) {
                     pathRewrite: {"^/api" : ""},
                     secure: false,
                     changeOrigin: true,
-                }
-            }
+                },
+            },
         },
         devtool: isProduction ?
             'hidden-source-map' :
             'cheap-module-eval-source-map',
     };
-}
+};

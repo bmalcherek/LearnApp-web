@@ -38,5 +38,9 @@
     "scripts": {
         "start": "node scripts/start.js",
         "build": "export NODE_ENV=production && rm -rf ./build && webpack --env.production --optimize-minimize"
+    },
+    "engines": {
+        "npm": "6.10.2",
+        "node": "12.6.0"
     }
 }
