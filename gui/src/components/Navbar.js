@@ -23,7 +23,9 @@ export class Navbar extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Token ${token}`,
             };
-            axios.get('http://localhost:8000/api/user/')
+
+            const url = process.env.REACT_APP_API_URL + 'api/user/';
+            axios.get(url)
                 .then(res => this.setState({
                     username: res.data.username,
                     loggedIn: true,

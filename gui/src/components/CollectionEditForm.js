@@ -39,9 +39,11 @@ export class CollectionEditForm extends Component {
         };
 
         if (this.props.edit) {
-            axios.put(`http://localhost:8000/api/collections/${collectionID}/`, collection);
+            const url = process.env.REACT_APP_API_URL + `api/collections/${collectionID}/`;
+            axios.put(url, collection);
         } else {
-            axios.post('http://localhost:8000/api/collections/', collection);
+            const url = process.env.REACT_APP_API_URL + 'api/collections/';
+            axios.post(url, collection);
         }
     }
 
@@ -58,7 +60,9 @@ export class CollectionEditForm extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Token ${token}`,
             };
-            axios.get(`http://localhost:8000/api/collections/${collectionID}`)
+
+            const url = process.env.REACT_APP_API_URL + `api/collections/${collectionID}`;
+            axios.get(url)
                 .then(res => this.setState({
                     collectionName: res.data.name,
                 }))

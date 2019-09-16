@@ -22,7 +22,9 @@ export class CollectionDetail extends Component {
             // eslint-disable-next-line quote-props
             'rating': event,
         };
-        axios.put(`http://localhost:8000/api/collections/${this.props.match.params.collectionID}/rate/`, data);
+
+        const url = process.env.REACT_APP_API_URL + `api/collections/${this.props.match.params.collectionID}/rate/`
+        axios.put(url, data);
     }
 
     handleCollectionDelete() {
@@ -32,7 +34,9 @@ export class CollectionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.delete(`http://localhost:8000/api/collections/${collID}/`);
+
+        const url = process.env.REACT_APP_API_URL + `api/collections/${collID}/`;
+        axios.delete(url);
         this.setState({
             deleted: true,
         });
@@ -51,7 +55,9 @@ export class CollectionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.get(`http://localhost:8000/api/collections/${collectionID}`)
+
+        const url = process.env.REACT_APP_API_URL + `api/collections/${collectionID}`;
+        axios.get(url)
             .then(res => this.setState({
                 collection: res.data,
                 loaded: true,

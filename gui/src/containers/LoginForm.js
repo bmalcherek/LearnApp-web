@@ -14,7 +14,7 @@ export class LoginForm extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 this.props.onAuth(values.username, values.password);

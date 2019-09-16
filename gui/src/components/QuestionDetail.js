@@ -22,7 +22,9 @@ export class QuestionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.delete(`http://localhost:8000/api/questions/${collectionID}/${questionID}`);
+
+        const url = process.env.REACT_APP_API_URL + `api/questions/${collectionID}/${questionID}`;
+        axios.delete(url);
         this.setState({
             deleted: true,
         });
@@ -43,7 +45,9 @@ export class QuestionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.get(`http://localhost:8000/api/questions/${collectionID}/${questionID}`)
+
+        const url = process.env.REACT_APP_API_URL + `api/questions/${collectionID}/${questionID}`;
+        axios.get(url)
             .then(res => this.setState({
                 question: res.data,
                 loading: false,

@@ -98,7 +98,9 @@ export class LearnView extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.put(`http://localhost:8000/api/my-questions/${collectionID}/${questionIndex}/`, data);
+
+        const url = process.env.REACT_APP_API_URL + `api/my-questions/${collectionID}/${questionIndex}/`;
+        axios.put(url, data);
 
         this.setState({
             answered: false,
@@ -145,7 +147,9 @@ export class LearnView extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.get(`http://localhost:8000/api/my-questions/${collectionID}/get-questions-to-learn/`)
+
+        const url = process.env.REACT_APP_API_URL + `api/my-questions/${collectionID}/get-questions-to-learn/`;
+        axios.get(url)
             .then(res => this.addOriginalIndex(res.data));
     }
 

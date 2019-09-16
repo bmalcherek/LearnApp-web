@@ -1,5 +1,7 @@
 /* eslint-disable arrow-body-style */
 import axios from 'axios';
+import { getApiUrl } from '../../apiAdapter';
+
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
@@ -41,7 +43,8 @@ export const checkAuthTimeout = (expirationTime) => {
 export const authLogin = (username, password) => {
     return (dispatch) => {
         dispatch(authStart());
-        axios.post('http://localhost:8000/rest-auth/login/', {
+        const url = process.env.REACT_APP_API_URL + 'rest-auth/login/';
+        axios.post(url, {
             username,
             password,
         })
@@ -64,7 +67,8 @@ export const authLogin = (username, password) => {
 export const authSignup = (username, email, password1, password2) => {
     return (dispatch) => {
         dispatch(authStart());
-        axios.post('http://localhost:8000/rest-auth/registration/', {
+        const url = process.env.REACT_APP_API_URL + 'rest-auth/registration/';
+        axios.post(url, {
             username,
             email,
             password1,

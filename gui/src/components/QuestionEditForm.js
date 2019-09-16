@@ -27,7 +27,9 @@ export class QuestionEditForm extends Component {
                 'Content-Type': 'application/json',
                 Authorization: `Token ${token}`,
             };
-            axios.get(`http://localhost:8000/api/questions/${collID}/${questID}`)
+
+            const url = process.env.REACT_APP_API_URL + `api/questions/${collID}/${questID}`;
+            axios.get(url)
                 .then(res => this.setState({
                     question: res.data.question,
                     isImage: res.data.is_image,
@@ -70,9 +72,11 @@ export class QuestionEditForm extends Component {
         };
         if (this.props.edit) {
             const questID = this.props.match.params.questionID;
-            axios.put(`http://127.0.0.1:8000/api/questions/${collID}/${questID}`, q);
+            const url = process.env.REACT_APP_API_URL + `api/questions/${collID}/${questID}`;
+            axios.put(url, q);
         } else {
-            axios.post(`http://127.0.0.1:8000/api/questions/${collID}/`, q)
+            const url = process.env.REACT_APP_API_URL + `api/questions/${collID}/`;
+            axios.post(url, q)
                 .then(res => console.log(res))
                 .catch(error => console.log(error));
         }

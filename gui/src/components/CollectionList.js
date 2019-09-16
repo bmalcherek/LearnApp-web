@@ -17,7 +17,8 @@ export class CollectionList extends Component {
         const data = {
             collection: collectionId,
         };
-        axios.post('http://localhost:8000/api/my-collections/', data);
+        const url = process.env.REACT_APP_API_URL + 'api/my-collections/';
+        axios.post(url, data);
     }
 
     componentDidMount() {
@@ -27,13 +28,17 @@ export class CollectionList extends Component {
             Authorization: `Token ${token}`,
         };
         if (this.props.myCollections) {
-            axios.get('http://localhost:8000/api/my-collections/')
+
+            const url = process.env.REACT_APP_API_URL + 'api/my-collections/';
+            axios.get(url)
                 .then(res => this.setState({
                     data: res.data,
                 }))
                 .catch(err => console.log(err));
         } else {
-            axios.get('http://localhost:8000/api/collections/')
+
+            const url = process.env.REACT_APP_API_URL + 'api/collections/';
+            axios.get(url)
                 .then(res => this.setState({
                     data: res.data,
                 }));

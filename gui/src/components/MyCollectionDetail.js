@@ -18,7 +18,9 @@ export class MyCollectionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.delete(`http://localhost:8000/api/my-collections/${collectionID}/`)
+
+        const url = process.env.REACT_APP_API_URL + `api/my-collections/${collectionID}/`;
+        axios.delete(url)
             .catch(err => console.log(err));
         this.props.history.push('/my-collections');
     }
@@ -30,7 +32,9 @@ export class MyCollectionDetail extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.get(`http://localhost:8000/api/my-collections/${collectionID}/`)
+
+        const url = process.env.REACT_APP_API_URL + `api/my-collections/${collectionID}/`;
+        axios.get(url)
             .then(res => this.setState({
                 collection: res.data,
                 loading: false,

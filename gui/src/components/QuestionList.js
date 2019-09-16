@@ -23,7 +23,9 @@ export class QuestionList extends Component {
             'Content-Type': 'application/json',
             Authorization: `Token ${token}`,
         };
-        axios.get(`http://localhost:8000/api/questions/${collectionID}`)
+
+        const url = process.env.REACT_APP_API_URL + `api/questions/${collectionID}`;
+        axios.get(url)
             .then(res => this.setState({
                 data: res.data,
             }));
