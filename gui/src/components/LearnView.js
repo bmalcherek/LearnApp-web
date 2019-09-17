@@ -4,6 +4,7 @@ import { Button, Typography, Progress, Tooltip } from 'antd';
 import axios from 'axios';
 
 import LearnSummary from './LearnSummary';
+import '../styles/LearnView.css';
 // import SubMenu from 'antd/lib/menu/SubMenu';
 
 export class LearnView extends Component {
@@ -154,30 +155,36 @@ export class LearnView extends Component {
     }
 
     render() {
-        // console.log(this.state);
         let question = null;
         let questionText = null;
         if (this.state.loaded && !this.state.finished) {
             question = this.state.questions[this.state.currentQuestion];
-            questionText = <Typography.Title level={2}>{question.question}</Typography.Title>;
+            questionText = <Typography.Title level={2} className="question">{question.question}</Typography.Title>;
         }
 
         let answer;
         if (this.state.answered && !this.state.finished) {
-            answer = <Typography.Title level={3}>{question.answer}</Typography.Title>;
+            answer = (<div style={{textAlign: "center"}}>
+                    <Typography.Title level={3}>{question.answer}</Typography.Title>
+                </div>);
         } else {
             answer = null;
         }
 
         let buttons = null;
         if (!this.state.answered && !this.state.finished) {
-            buttons = <Button onClick={this.showAnswer}>Show Answer</Button>;
+            buttons = (<div style={{textAlign: "center"}}>
+                <Button onClick={this.showAnswer}>
+                    Show Answer
+                </Button>
+            </div>);
         } else if (!this.state.finished) {
             buttons = (
-                <div>
+                <div id="answerButtons" style={{
+                    textAlign: "center"}}>
                     <Button name="great" onClick={this.handleSubmit}>Great</Button>
                     <Button name="good" onClick={this.handleSubmit}>Good</Button>
-                    <Button className="average" name="average" onClick={this.handleSubmit}>Average</Button>
+                    <Button name="average" onClick={this.handleSubmit}>Average</Button>
                     <Button name="bad" onClick={this.handleSubmit}>Bad</Button>
                     <Button name="veryBad" onClick={this.handleSubmit}>Very Bad</Button>
                     <Button name="wrong" onClick={this.handleSubmit}>Wrong!</Button>

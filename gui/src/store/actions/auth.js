@@ -1,6 +1,5 @@
 /* eslint-disable arrow-body-style */
 import axios from 'axios';
-import { getApiUrl } from '../../apiAdapter';
 
 import * as actionTypes from './actionTypes';
 

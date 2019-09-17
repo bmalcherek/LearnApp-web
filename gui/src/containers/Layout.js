@@ -28,7 +28,7 @@ export class CustomLayout extends Component {
                             {this.props.children}
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>LearnIt Early Alpha</Footer>
                 </Layout>
             </div>
         );
