@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, Input, Checkbox, Button } from 'antd';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export class QuestionEditForm extends Component {
@@ -50,12 +49,13 @@ export class QuestionEditForm extends Component {
     }
 
     onSubmit(event) {
-        event.preventDefault();
+        // event.preventDefault();
         const question = event.target.elements.question.value;
         const isImage = event.target.elements.isImage.checked;
         const imageSrc = event.target.elements.imageSrc.value;
         const answer = event.target.elements.answer.value;
         const collID = this.props.match.params.collectionID;
+        console.log(this.state);
 
         const q = {
             question,
@@ -80,42 +80,57 @@ export class QuestionEditForm extends Component {
                 .then(res => console.log(res))
                 .catch(error => console.log(error));
         }
+        
+        if (this.state.createNext) {
+            this.props.history.push(`/collections/${collID}/create-new-question`);
+        } else {
+            this.props.history.push(`/collections/${collID}`);
+        }
+    }
 
+    createNext() {
         this.setState({
-            submitted: true,
+            'createNext':true,
         });
     }
 
     render() {
-        let redirect;
-        if (this.state.submitted) {
-            redirect = <Redirect to={{ pathname: `/collections/${this.props.match.params.collectionID}`, state: 'refresh' }} />;
-        } else {
-            redirect = null;
-        }
-
         return (
             <div>
-                <Form onSubmit={this.onSubmit}>
+                <Form onSubmit={this.onSubmit} id="question">
                     <Form.Item label="Question" required="true">
                         <Input name="question" placeholder="Question" value={this.state.question} onChange={this.onChange} />
                     </Form.Item>
+
                     <Form.Item label="Is image?">
                         <Checkbox name="isImage" value={this.state.isImage} onChange={this.onChange} />
                     </Form.Item>
+
                     <Form.Item label="Image source: ">
                         <Input name="imageSrc" placeholder="Source" value={this.state.imageSrc} onChange={this.onChange} />
                     </Form.Item>
+
                     <Form.Item label="Answer">
                         <Input name="answer" placeholder="Answer" value={this.state.answer} onChange={this.onChange} />
                     </Form.Item>
+
                     <Form.Item>
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
+                        {!this.props.edit ? 
+                            (<Button
+                                name="createNext"
+                                form="question"
+                                htmlType="submit"
+                                onClick={this.createNext.bind(this)}
+                                style={{borderLeft: "10px"}}>
+                                Save and create next
+                            </Button>) 
+                            :
+                            null}
                     </Form.Item>
                 </Form>
-                {redirect}
             </div>
         );
     }

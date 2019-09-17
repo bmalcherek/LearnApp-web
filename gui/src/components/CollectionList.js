@@ -70,8 +70,10 @@ export class CollectionList extends Component {
                                 <div>
                                     {item.to_learn} to learn
                                     <Link to={`collections/${item.id}/learn`} style={{ paddingLeft: '5px' }}>
-                                        {item.to_learn > 0 ? <Button>Learn</Button> : <Button disabled>Learn</Button>}
-                                        {/* <Button>Learn</Button> */}
+                                        {item.to_learn > 0 ? 
+                                            <Button>Learn</Button> 
+                                            : 
+                                            <Button disabled>Learn</Button>}
                                     </Link>
                                 </div>
                             :
