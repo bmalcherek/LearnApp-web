@@ -11,6 +11,7 @@ export class CollectionEditForm extends Component {
         };
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.redirect = this.redirect.bind(this);
     }
 
     onChange(event) {
@@ -40,20 +41,21 @@ export class CollectionEditForm extends Component {
 
         if (this.props.edit) {
             const url = process.env.REACT_APP_API_URL + `api/collections/${collectionID}/`;
-            axios.put(url, collection);
+            axios.put(url, collection)
+                .then(res => this.redirect(res));
         } else {
             const url = process.env.REACT_APP_API_URL + 'api/collections/';
-            axios.post(url, collection);
+            axios.post(url, collection)
+                .then(res => this.redirect(res));
         }
+    }
+
+    redirect(res) {
+        this.props.history.push(`/collections/${res.data.id}`)
     }
 
     componentDidMount() {
         if (this.props.edit) {
-            // fetch(`http://localhost:8000/api/collections/${this.props.match.params.collectionID}`)
-            //     .then(res => res.json())
-            //     .then(res => this.setState({
-            //         collectionName: res.name,
-            //     }));
             const collectionID = this.props.match.params.collectionID;
             const token = localStorage.getItem('token');
             axios.defaults.headers = {

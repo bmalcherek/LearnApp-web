@@ -61,7 +61,7 @@ export class CollectionList extends Component {
                 <List
                     itemLayout="horizontal"
                     pagination={{
-                        pageSize: 3,
+                        pageSize: 10,
                     }}
                     dataSource={this.state.data}
                     renderItem={item => (
