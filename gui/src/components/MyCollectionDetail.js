@@ -23,6 +23,7 @@ export class MyCollectionDetail extends Component {
         axios.delete(url)
             .catch(err => console.log(err));
         this.props.history.push('/my-collections');
+        window.location.reload();
     }
 
     componentDidMount() {

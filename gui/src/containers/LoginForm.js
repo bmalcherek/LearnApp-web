@@ -7,20 +7,20 @@ import * as actions from '../store/actions/auth';
 export class LoginForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loading: false,
-        };
+        // this.state = {
+        //     loading: false,
+        // };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 this.props.onAuth(values.username, values.password);
+                this.props.history.push('/');
             }
         });
-        this.props.history.push('/');
     }
 
     render() {

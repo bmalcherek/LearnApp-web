@@ -43,6 +43,18 @@ export const authLogin = (username, password) => {
     return (dispatch) => {
         dispatch(authStart());
         const url = process.env.REACT_APP_API_URL + 'rest-auth/login/';
+        // try {
+        //     const res = await axios.post(url, { username, password })
+        //     const token = res.data.key;
+        //     const currDate = new Date();
+        //     const expirationDate = new Date(currDate.getTime() + 3600000);
+        //     localStorage.setItem('token', token);
+        //     localStorage.setItem('expirationDate', expirationDate);
+        //     dispatch(authSuccess(token));
+        //     dispatch(checkAuthTimeout(3600));
+        // } catch(error) {
+        //     dispatch(authFail(error));
+        // }
         axios.post(url, {
             username,
             password,
