@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+.average {
+  background-color: yellow;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "gui",
+  "dependencies": {
+    "antd": "^3.20.0",
+    "axios": "^0.19.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "version": "0.1.0",
+  "scripts": {
+    "start": "REACT_APP_API_URL=http://localhost:8000/ react-scripts start",
+    "build": "REACT_APP_API_URL=https://learn-app-api.herokuapp.com/ react-scripts build",
+    "postinstall": "npm run build"
+  },
+  "engines": {
+    "npm": "6.10.2",
+    "node": "12.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.1",
+    "react-scripts": "^3.1.2"
+  }
+}

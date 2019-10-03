@@ -1,0 +1,13 @@
+.progressBars {
+    width: 50%;
+}
+
+.summaryText {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.returnButton {
+    text-align: center;
+    margin-top: 10px;
+}
