@@ -1,0 +1,87 @@
+:root {
+  --primary-color: #ff5722;
+  --primary-color-light: #ffccbc;
+  --primary-color-dark: #e64a19;
+
+  --secondary-color: #ffc107;
+  --secondary-color-light: #ffecb3;
+  --secondary-color-dark: #ffa000;
+
+  --text-color-light: #ffffff;
+  --text-color-dark: #212121;
+  --background-color: #ffffff;
+  --background-color-hovered: #eeeeee;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--background-color, pink);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-auto-rows: minmax(60px, auto);
+  grid-template-areas:
+    'header header header'
+    '. content .'
+    'footer footer footer';
+  grid-gap: 2px;
+  width: 100%;
+}
+
+.app > div {
+  border-style: solid;
+  border-color: var(--primary-color-dark, pink);
+  border-width: 2px;
+}
+
+.content {
+  grid-area: content;
+}
+
+.content > * {
+  margin: 5px;
+  padding: 5px;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  display: none;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link.dark {
+  color: var(--text-color-light, pink);
+}
+
+.link.light {
+  color: var(--text-color-dark, pink);
+}
+
+.btn {
+  padding: 2px 7px 2px 7px;
+  display: block;
+  background-color: var(--secondary-color, pink);
+  color: var(--text-color-light, pink);
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.btn:hover {
+  background-color: var(--secondary-color-dark, pink);
+}

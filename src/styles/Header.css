@@ -1,0 +1,22 @@
+.header {
+  grid-area: header;
+  background-color: var(--primary-color, pink);
+  color: var(--text-color-light, pink);
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.header-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-links:hover {
+  background-color: var(--primary-color-dark, pink);
+}
+
+#user-info {
+  grid-column: -2/-1;
+}

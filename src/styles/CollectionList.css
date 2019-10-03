@@ -1,0 +1,36 @@
+#collection-list-component {
+  grid-area: content;
+}
+
+#collection-list {
+  display: grid;
+  grid-auto-rows: minmax(50px, auto);
+  gap: 2px;
+
+  margin: 0;
+  padding: 0;
+}
+
+#create-new-collection-btn {
+  /* margin: 5px 0 0 5px; */
+  margin-bottom: 10px;
+  padding: 5px 10px;
+}
+
+#add-to-my-collections-btn {
+  position: absolute;
+  right: 20%;
+}
+
+.collection-list-element {
+  display: flex;
+  border: solid;
+  border-width: 1px;
+  border-color: var(--primary-color-light, pink);
+  align-items: center;
+  padding: 5px;
+}
+
+.collection-list-element:hover {
+  background-color: var(--background-color-hovered, pink);
+}
