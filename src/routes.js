@@ -1,6 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import PrivateRoute from './helpers/PrivateRoute';
+
 import CollectionList from './components/CollectionList';
 import NewCollectionForm from './components/forms/NewCollectionForm';
 import CollectionDetail from './components/CollectionDetail';
@@ -11,25 +13,29 @@ import MyCollectionsList from './components/MyCollectionsList';
 const BaseRouter = () => (
   <div id="router" className="content">
     <Switch>
-      <Route exact path="/" component={CollectionList} />
       <Route exact path="/login" component={LoginForm} />
-      <Route exact path="/collections" component={CollectionList} />
-      <Route
+      <PrivateRoute exact path="/" component={CollectionList} />
+      <PrivateRoute exact path="/collections" component={CollectionList} />
+      <PrivateRoute
         exact
         path="/collections/:collectionID"
         component={CollectionDetail}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/create-new-collection"
         component={NewCollectionForm}
       />
-      <Route
+      <PrivateRoute
         exact
         path="/collections/:collectionID/add-question"
         component={QuestionForm}
       />
-      <Route exact path="/my-collections" component={MyCollectionsList} />
+      <PrivateRoute
+        exact
+        path="/my-collections"
+        component={MyCollectionsList}
+      />
     </Switch>
   </div>
 );
