@@ -6,6 +6,7 @@ import NewCollectionForm from './components/forms/NewCollectionForm';
 import CollectionDetail from './components/CollectionDetail';
 import QuestionForm from './components/forms/QuestionForm';
 import LoginForm from './components/forms/LoginForm';
+import MyCollectionsList from './components/MyCollectionsList';
 
 const BaseRouter = () => (
   <div id="router" className="content">
@@ -28,6 +29,7 @@ const BaseRouter = () => (
         path="/collections/:collectionID/add-question"
         component={QuestionForm}
       />
+      <Route exact path="/my-collections" component={MyCollectionsList} />
     </Switch>
   </div>
 );

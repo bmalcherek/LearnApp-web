@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { fetchData } from '../helpers';
+import { fetchData, postData } from '../helpers';
 import '../styles/CollectionList.css';
 
 export default function CollectionList() {
@@ -12,12 +12,26 @@ export default function CollectionList() {
     response.then(res => setCollections(res.data));
   }, []);
 
+  const addToMyCollections = event => {
+    const data = {
+      collection: event.target.name
+    };
+
+    const response = postData('api/my-collections/', data);
+    response.catch(err => console.log(err));
+  };
+
   const listElements = collections.map(collection => (
     <li className="collection-list-element" key={collection.name.toString()}>
       <Link className="link light" to={`/collections/${collection.id}`}>
         {collection.name}
       </Link>
-      <button className="btn" id="add-to-my-collections-btn" type="button">
+      <button
+        className="btn add-to-my-collections-btn"
+        name={collection.id}
+        type="button"
+        onClick={addToMyCollections}
+      >
         +
       </button>
     </li>
