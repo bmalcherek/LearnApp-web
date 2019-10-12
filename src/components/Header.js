@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import UserInfo from './UserInfo';
 import '../styles/Header.css';
 
 export default function Header() {
@@ -19,7 +20,7 @@ export default function Header() {
       </div>
 
       <div id="user-info" className="header-links">
-        User Info Here
+        <UserInfo />
       </div>
     </div>
   );

@@ -3,18 +3,21 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './components/Header';
 import BaseRouter from './routes';
+import { AuthProvider } from './context';
+
 import './styles/App.css';
 
 function App() {
   return (
-    <div className="app">
-      <Router>
-        <Header />
-        <BaseRouter />
-        {/* <CollectionList /> */}
-        <div className="footer">Footer</div>
-      </Router>
-    </div>
+    <AuthProvider>
+      <div className="app">
+        <Router>
+          <Header />
+          <BaseRouter />
+          <div className="footer">Footer</div>
+        </Router>
+      </div>
+    </AuthProvider>
   );
 }
 
