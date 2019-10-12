@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+
+import { postData } from '../../helpers';
 
 const QuestionForm = props => {
   const { match } = props;
@@ -22,8 +23,6 @@ const QuestionForm = props => {
   };
 
   const handleSubmit = () => {
-    const url = `${process.env.REACT_APP_API_URL}api/questions/${collectionID}/`;
-    const token = localStorage.getItem('token');
     const questionData = {
       question,
       isImage: false,
@@ -31,12 +30,9 @@ const QuestionForm = props => {
       answer,
       collection: collectionID
     };
-    axios.defaults.headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`
-    };
+    const response = postData(`api/questions/${collectionID}/`, questionData);
+    response.catch(err => console.log(err));
 
-    axios.post(url, questionData).catch(err => console.log(err));
     props.history.push(`/collections/${collectionID}`);
   };
 

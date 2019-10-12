@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { fetchData } from '../helpers';
 import '../styles/CollectionList.css';
-import axios from 'axios';
 
 export default function CollectionList() {
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `${process.env.REACT_APP_API_URL}api/collections/`;
-      const token = localStorage.getItem('token');
-      axios.defaults.headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${token}`
-      };
-
-      const result = await axios.get(url);
-      setCollections(result.data);
-    };
-
-    fetchData();
+    const response = fetchData('api/collections/');
+    response.then(res => setCollections(res.data));
   }, []);
 
   const listElements = collections.map(collection => (

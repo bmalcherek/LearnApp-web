@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchData = async path => {
+const postData = async (path, data) => {
   const url = `${process.env.REACT_APP_API_URL}${path}`;
   const token = localStorage.getItem('token');
   axios.defaults.headers = {
@@ -8,7 +8,7 @@ const fetchData = async path => {
     Authorization: `Token ${token}`
   };
 
-  return axios.get(url);
+  return axios.post(url, data);
 };
 
-export default fetchData;
+export default postData;

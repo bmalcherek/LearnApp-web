@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+
+import { postData } from '../../helpers';
 
 export default function NewCollectionForm(props) {
   const [collectionName, setCollectionName] = useState('');
 
   const handleSubmit = () => {
-    const url = `${process.env.REACT_APP_API_URL}api/collections/`;
-    const token = localStorage.getItem('token');
     const collection = {
       name: collectionName
     };
-    axios.defaults.headers = {
-      'Content-Type': 'application/json',
-      Authorization: `Token ${token}`
-    };
-
-    axios
-      .post(url, collection)
+    const response = postData('api/collections/', collection);
+    response
       .then(res => props.history.push(`/collections/${res.data.id}`))
       .catch(err => console.log(err));
   };

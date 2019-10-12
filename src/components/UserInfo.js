@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useAuthValue } from '../context';
-import fetchData from '../helpers/fetchData';
 
 const UserInfo = () => {
-  const { auth, setAuth } = useAuthValue();
-
-  const [user, setUser] = useState('');
-
-  useEffect(() => {
-    console.log('xd');
-    setUser('xd');
-    fetchData('xd');
-  }, [user]);
+  const { auth, setAuth, username } = useAuthValue();
 
   const changeAuth = () => {
     setAuth(!auth);
@@ -26,7 +17,7 @@ const UserInfo = () => {
     </Link>
   );
   if (auth) {
-    content = user;
+    content = username;
   }
   return (
     <div id="user-info">

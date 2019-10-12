@@ -5,11 +5,13 @@ import CollectionList from './components/CollectionList';
 import NewCollectionForm from './components/forms/NewCollectionForm';
 import CollectionDetail from './components/CollectionDetail';
 import QuestionForm from './components/forms/QuestionForm';
+import LoginForm from './components/forms/LoginForm';
 
 const BaseRouter = () => (
   <div id="router" className="content">
     <Switch>
       <Route exact path="/" component={CollectionList} />
+      <Route exact path="/login" component={LoginForm} />
       <Route exact path="/collections" component={CollectionList} />
       <Route
         exact

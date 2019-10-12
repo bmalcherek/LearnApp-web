@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
+import { fetchData } from '../helpers';
 import '../styles/CollectionDetail.css';
 
 const CollectionDetail = props => {
@@ -12,19 +12,8 @@ const CollectionDetail = props => {
   const [collection, setCollection] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `${process.env.REACT_APP_API_URL}api/collections/${collectionID}/`;
-      const token = localStorage.getItem('token');
-      axios.defaults.headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${token}`
-      };
-      const result = await axios.get(url);
-      console.log(result.data);
-      setCollection(result.data);
-    };
-
-    fetchData();
+    const response = fetchData(`api/collections/${collectionID}/`);
+    response.then(res => setCollection(res.data));
   }, [collectionID]);
 
   return (

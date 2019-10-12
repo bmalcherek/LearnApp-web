@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(false);
+  const [username, setUsername] = useState('');
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
+    <AuthContext.Provider value={{ auth, setAuth, username, setUsername }}>
       {children}
     </AuthContext.Provider>
   );
