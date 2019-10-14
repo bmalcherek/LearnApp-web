@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { postData } from '../../helpers';
 import { useAuthValue } from '../../context';
@@ -73,6 +74,8 @@ const LoginForm = props => {
           Submit
         </button>
       </form>
+      {`Don't have an account?`}
+      <Link to="/registration"> Click Here</Link>
     </div>
   );
 };

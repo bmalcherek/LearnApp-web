@@ -9,11 +9,13 @@ import CollectionDetail from './components/CollectionDetail';
 import QuestionForm from './components/forms/QuestionForm';
 import LoginForm from './components/forms/LoginForm';
 import MyCollectionsList from './components/MyCollectionsList';
+import RegistrationForm from './components/forms/RegistrationForm';
 
 const BaseRouter = () => (
   <div id="router" className="content">
     <Switch>
       <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/registration" component={RegistrationForm} />
       <PrivateRoute exact path="/" component={CollectionList} />
       <PrivateRoute exact path="/collections" component={CollectionList} />
       <PrivateRoute
