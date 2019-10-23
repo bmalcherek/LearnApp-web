@@ -5,6 +5,8 @@ import { useAuthValue } from '../context';
 import logout from '../helpers/logout';
 import { fetchData } from '../helpers';
 
+import '../styles/UserInfo.css';
+
 const UserInfo = () => {
   const { auth, setAuth, username, setUsername, setStayAuth } = useAuthValue();
 
@@ -37,9 +39,11 @@ const UserInfo = () => {
   return (
     <div id="user-info">
       {content}
-      <button type="button" onClick={changeAuth}>
-        Logout
-      </button>
+      <div id="user-info-dropdown">
+        <button type="button" onClick={changeAuth}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 };

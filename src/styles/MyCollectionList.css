@@ -1,0 +1,12 @@
+#collection-options {
+  right: 20%;
+  position: absolute;
+}
+
+#learn-btn {
+  display: inline-block;
+}
+
+#to-learn-txt {
+  padding-right: 5px;
+}

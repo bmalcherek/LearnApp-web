@@ -1,0 +1,8 @@
+#user-info-dropdown {
+  display: none;
+  grid-area: right-sidebar;
+}
+
+#user-info:hover #user-info-dropdown {
+  display: block;
+}

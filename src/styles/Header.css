@@ -9,6 +9,7 @@
 
 .header-links {
   display: flex;
+  flex: wrap;
   align-items: center;
   justify-content: center;
 }
