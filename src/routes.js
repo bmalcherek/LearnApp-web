@@ -10,6 +10,7 @@ import QuestionForm from './components/forms/QuestionForm';
 import LoginForm from './components/forms/LoginForm';
 import MyCollectionsList from './components/MyCollectionsList';
 import RegistrationForm from './components/forms/RegistrationForm';
+import LearnView from './components/LearnView';
 
 const BaseRouter = () => (
   <div id="router" className="content">
@@ -37,6 +38,11 @@ const BaseRouter = () => (
         exact
         path="/my-collections"
         component={MyCollectionsList}
+      />
+      <PrivateRoute
+        exact
+        path="/my-collections/:collectionID/learn"
+        component={LearnView}
       />
     </Switch>
   </div>

@@ -18,7 +18,7 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-color: var(--background-color, pink);
+  background-color: var(--background-color-hovered, pink);
 }
 
 ul {
@@ -45,6 +45,7 @@ ul {
 
 .content {
   grid-area: content;
+  background-color: white;
 }
 
 .content > * {

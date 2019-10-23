@@ -34,8 +34,6 @@ const MyCollectionList = () => {
     </li>
   ));
 
-  console.log(collections);
-
   return (
     <div id="my-collections-list-container">
       <span id="my-collections-txt">My collections</span>
