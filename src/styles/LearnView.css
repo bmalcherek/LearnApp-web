@@ -2,4 +2,10 @@
   display: inline-block;
   padding: 5px;
   margin: 5px;
+  width: 80px;
+}
+
+#answer-buttons {
+  display: flex;
+  justify-content: center;
 }

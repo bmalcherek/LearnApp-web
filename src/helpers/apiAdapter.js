@@ -23,3 +23,14 @@ export const postData = async (path, data) => {
 
   return axios.post(url, data);
 };
+
+export const putData = async (path, data) => {
+  const url = `${process.env.REACT_APP_API_URL}${path}`;
+  const token = getItem('token');
+  axios.defaults.headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Token ${token}`
+  };
+
+  return axios.put(url, data);
+};
