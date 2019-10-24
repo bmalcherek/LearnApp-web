@@ -44,6 +44,12 @@ const BaseRouter = () => (
         path="/my-collections/:collectionID/learn"
         component={LearnView}
       />
+      <Route
+        exact
+        path="/collections/:collectionID/:questionID/edit"
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        component={props => <QuestionForm {...props} edit />}
+      />
     </Switch>
   </div>
 );

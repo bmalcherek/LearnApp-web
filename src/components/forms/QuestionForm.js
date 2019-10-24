@@ -1,13 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 
-import { postData } from '../../helpers';
+import { postData, fetchData, putData } from '../../helpers';
 
 const QuestionForm = props => {
-  const { match } = props;
+  const { match, edit } = props;
   const { collectionID } = match.params;
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
+
+  const { questionID } = useParams();
+
+  useEffect(() => {
+    if (edit) {
+      const response = fetchData(
+        `api/questions/${collectionID}/${questionID}/`
+      );
+      response.then(res => {
+        const { data } = res;
+        setQuestion(data.question);
+        setAnswer(data.answer);
+      });
+    }
+  }, [collectionID, questionID, edit]);
 
   const handleChange = event => {
     switch (event.target.name) {
@@ -30,8 +46,16 @@ const QuestionForm = props => {
       answer,
       collection: collectionID
     };
-    const response = postData(`api/questions/${collectionID}/`, questionData);
-    response.catch(err => console.log(err));
+    if (!edit) {
+      const response = postData(`api/questions/${collectionID}/`, questionData);
+      response.catch(err => console.log(err));
+    } else {
+      const response = putData(
+        `api/questions/${collectionID}/${questionID}/`,
+        questionData
+      );
+      response.catch(err => console.log(err));
+    }
 
     props.history.push(`/collections/${collectionID}`);
   };
@@ -77,7 +101,8 @@ QuestionForm.propTypes = {
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  edit: PropTypes.bool.isRequired
 };
 
 export default QuestionForm;
