@@ -104,3 +104,13 @@ ul {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+#trash-icon {
+  background-color: var(--delete-btn-color, pink);
+  color: var(--background-color-hovered, pink);
+  border: none;
+}
+
+#trash-icon:hover {
+  background-color: var(--delete-btn-color-hover, pink);
+}

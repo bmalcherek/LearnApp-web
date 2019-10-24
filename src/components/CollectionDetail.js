@@ -12,11 +12,13 @@ const CollectionDetail = props => {
   const { collectionID } = match.params;
 
   const [collection, setCollection] = useState({});
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     const response = fetchData(`api/collections/${collectionID}/`);
     response.then(res => setCollection(res.data));
-  }, [collectionID]);
+    setEdit(false);
+  }, [collectionID, edit]);
 
   return (
     <div id="collection-detail">
@@ -28,7 +30,12 @@ const CollectionDetail = props => {
       <hr />
       <div id="questions">
         <div id="questions-options">
-          <button className="btn" id="add-question-btn" type="button">
+          <button
+            className="btn"
+            id="add-question-btn"
+            type="button"
+            onClick={() => setEdit(true)}
+          >
             <Link
               className="link dark"
               to={`/collections/${collectionID}/add-question`}

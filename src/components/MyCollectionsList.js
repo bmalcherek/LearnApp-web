@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { fetchData } from '../helpers';
+import { fetchData, deleteItem } from '../helpers';
 
 import '../styles/MyCollectionList.css';
 
 const MyCollectionList = () => {
   const [collections, setCollections] = useState([]);
+  const [edit, setEdit] = useState(false);
 
   useEffect(() => {
     const response = fetchData('api/my-collections/');
     response
       .then(res => setCollections(res.data))
       .catch(err => console.log(err));
-  }, []);
+
+    setEdit(false);
+  }, [edit]);
+
+  const handleDelete = event => {
+    const response = deleteItem(
+      `api/my-collections/${event.currentTarget.name}/`
+    );
+    response.then(() => setEdit(true));
+  };
 
   const collectionList = collections.map(collection => (
     <li className="collection-list-element" key={collection.id}>
@@ -30,6 +40,15 @@ const MyCollectionList = () => {
             Learn
           </button>
         </Link>
+        <button
+          type="button"
+          onClick={handleDelete}
+          id="trash-icon"
+          className="btn"
+          name={collection.id}
+        >
+          <i className="far fa-trash-alt" />
+        </button>
       </div>
     </li>
   ));
