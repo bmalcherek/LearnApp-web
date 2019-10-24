@@ -12,7 +12,6 @@
 }
 
 #create-new-collection-btn {
-  /* margin: 5px 0 0 5px; */
   margin-bottom: 10px;
   padding: 5px 10px;
 }
@@ -24,9 +23,8 @@
 
 .collection-list-element {
   display: flex;
-  border: solid;
-  border-width: 1px;
-  border-color: var(--primary-color-light, pink);
+  border-bottom: solid 1px;
+  border-bottom-color: var(--border-color, pink);
   align-items: center;
   padding: 5px;
 }

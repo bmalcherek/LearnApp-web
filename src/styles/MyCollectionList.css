@@ -10,3 +10,17 @@
 #to-learn-txt {
   padding-right: 5px;
 }
+
+#my-collections-header {
+  border-bottom: solid 2px;
+  border-bottom-color: var(--border-color);
+}
+
+#my-collections-text {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+#my-collections-list {
+  padding-left: 10px;
+}

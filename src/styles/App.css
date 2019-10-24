@@ -39,15 +39,10 @@ ul {
   width: 100%;
 }
 
-.app > div {
-  border-style: solid;
-  border-color: var(--primary-color-dark, pink);
-  border-width: 2px;
-}
-
 .content {
   grid-area: content;
   background-color: white;
+  border-radius: 7px;
 }
 
 .content > * {

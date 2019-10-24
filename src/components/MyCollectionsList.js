@@ -36,8 +36,12 @@ const MyCollectionList = () => {
 
   return (
     <div id="my-collections-list-container">
-      <span id="my-collections-txt">My collections</span>
-      <ul i="my-collections-list">{collectionList}</ul>
+      <div id="my-collections-header">
+        <div id="my-collections-text">
+          <h3>My collections</h3>
+        </div>
+      </div>
+      <ul id="my-collections-list">{collectionList}</ul>
     </div>
   );
 };
