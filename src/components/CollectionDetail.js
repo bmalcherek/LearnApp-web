@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { fetchData } from '../helpers';
+import QuestionList from './QuestionList';
+
 import '../styles/CollectionDetail.css';
 
 const CollectionDetail = props => {
@@ -35,7 +37,7 @@ const CollectionDetail = props => {
             </Link>
           </button>
         </div>
-        Put questions here
+        <QuestionList collectionID={collectionID} />
       </div>
     </div>
   );

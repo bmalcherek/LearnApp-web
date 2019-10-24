@@ -1,0 +1,23 @@
+#question-list {
+  display: grid;
+  grid-auto-rows: minmax(35px, auto);
+  gap: 2px;
+  padding: 0;
+}
+
+.question-list-element {
+  display: inline-block;
+  padding: 5px;
+  padding-left: 10px;
+  border-bottom: solid 1px;
+  border-color: var(--border-color, pink);
+}
+
+.question-list-element:hover {
+  background-color: var(--background-color-hovered, pink);
+}
+
+#edit-btn {
+  float: right;
+  margin-right: 10px;
+}

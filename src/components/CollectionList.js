@@ -42,7 +42,7 @@ export default function CollectionList() {
       <div id="collections-options">
         <button className="btn" id="create-new-collection-btn" type="button">
           <Link className="link dark" to="/create-new-collection">
-            Create new colletions
+            Create new colletion
           </Link>
         </button>
       </div>
