@@ -1,4 +1,4 @@
 import { setItem, getItem } from './windowStorage';
-import { fetchData, postData, putData } from './apiAdapter';
+import { fetchData, postData, putData, deleteItem } from './apiAdapter';
 
-export { setItem, getItem, fetchData, postData, putData };
+export { setItem, getItem, fetchData, postData, putData, deleteItem };

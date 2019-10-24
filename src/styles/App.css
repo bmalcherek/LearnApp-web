@@ -12,6 +12,9 @@
   --background-color: #ffffff;
   --background-color-hovered: #eeeeee;
 
+  --delete-btn-color: #d32f2f;
+  --delete-btn-color-hover: #9a0007;
+
   --border-color: #dddddd;
 
   font-family: 'Roboto', sans-serif;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { fetchData } from '../helpers';
+import { fetchData, deleteItem } from '../helpers';
 
 import '../styles/QuestionList.css';
 
@@ -19,18 +19,41 @@ const QuestionList = props => {
     });
   }, [collectionID, edit]);
 
+  const handleDelete = event => {
+    const response = deleteItem(
+      `api/questions/${collectionID}/${event.currentTarget.name}`
+    );
+    response.then(() => setEdit(true));
+  };
+
   const listElements = questions.map(question => (
     <li className="question-list-element" key={question.id}>
       {question.question}
-      <div id="edit-btn">
-        <Link
-          to={`/collections/${collectionID}/${question.id}/edit`}
-          className="link dark"
-        >
-          <button type="button" className="btn" onClick={() => setEdit(true)}>
-            Edit
+      <div id="question-utils">
+        <div id="question-utils-container">
+          <Link
+            to={`/collections/${collectionID}/${question.id}/edit`}
+            className="link dark"
+          >
+            <button
+              type="button"
+              className="btn"
+              id="edit-btn"
+              onClick={() => setEdit(true)}
+            >
+              Edit
+            </button>
+          </Link>
+          <button
+            name={question.id}
+            id="trash-icon"
+            className="btn"
+            type="button"
+            onClick={handleDelete}
+          >
+            <i className="far fa-trash-alt" />
           </button>
-        </Link>
+        </div>
       </div>
     </li>
   ));

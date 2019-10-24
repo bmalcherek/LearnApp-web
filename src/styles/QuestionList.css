@@ -1,7 +1,6 @@
 #question-list {
   display: grid;
-  grid-auto-rows: minmax(35px, auto);
-  gap: 2px;
+  grid-auto-rows: minmax(40px, auto);
   padding: 0;
 }
 
@@ -17,7 +16,29 @@
   background-color: var(--background-color-hovered, pink);
 }
 
-#edit-btn {
+#question-utils {
   float: right;
   margin-right: 10px;
+}
+
+#question-utils-container {
+  display: flex;
+}
+
+#trash-icon {
+  margin-left: 10px;
+  padding: 2px 5px;
+  display: inline-block;
+  background-color: var(--delete-btn-color, pink);
+  color: var(--background-color-hovered, pink);
+  border-radius: 4px;
+  border: none;
+}
+
+#trash-icon:hover {
+  background-color: var(--delete-btn-color-hover, pink);
+}
+
+#edit-btn {
+  padding: 5px;
 }

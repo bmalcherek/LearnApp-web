@@ -34,3 +34,14 @@ export const putData = async (path, data) => {
 
   return axios.put(url, data);
 };
+
+export const deleteItem = async path => {
+  const url = `${process.env.REACT_APP_API_URL}${path}`;
+  const token = getItem('token');
+  axios.defaults.headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Token ${token}`
+  };
+
+  return axios.delete(url);
+};
