@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+import { fetchData } from '../helpers';
 
 import '../styles/QuestionList.css';
 
 const QuestionList = props => {
   const [questions, setQuestions] = useState([]);
+  const [edit, setEdit] = useState(false);
   const { collectionID } = props;
 
   useEffect(() => {
-    const fetchData = async () => {
-      const url = `${process.env.REACT_APP_API_URL}api/questions/${collectionID}/`;
-      const token = localStorage.getItem('token');
-      axios.defaults.headers = {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${token}`
-      };
-
-      const result = await axios.get(url);
-      setQuestions(result.data);
-    };
-    fetchData();
-  }, [collectionID]);
+    const response = fetchData(`api/questions/${collectionID}/`);
+    response.then(res => {
+      setQuestions(res.data);
+      setEdit(false);
+    });
+  }, [collectionID, edit]);
 
   const listElements = questions.map(question => (
     <li className="question-list-element" key={question.id}>
@@ -32,7 +27,7 @@ const QuestionList = props => {
           to={`/collections/${collectionID}/${question.id}/edit`}
           className="link dark"
         >
-          <button type="button" className="btn">
+          <button type="button" className="btn" onClick={() => setEdit(true)}>
             Edit
           </button>
         </Link>
