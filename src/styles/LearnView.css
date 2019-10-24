@@ -1,11 +1,35 @@
-#answer-buttons > button {
+#show-answer-btn,
+#return-btn {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+#answer-btns-container > button {
   display: inline-block;
   padding: 5px;
   margin: 5px;
   width: 80px;
 }
 
-#answer-buttons {
+#answer-btns-container,
+#show-answer-btn-container,
+#return-btn-container {
   display: flex;
   justify-content: center;
+  padding-top: 25px;
+}
+
+#learn-view-container {
+  text-align: center;
+}
+
+#question,
+#answer {
+  height: 50px;
+  padding: 10px;
+}
+
+#question {
+  margin-top: 25px;
 }

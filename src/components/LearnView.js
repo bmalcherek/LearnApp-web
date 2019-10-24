@@ -53,11 +53,11 @@ const LearnView = () => {
     }
 
     putData(
-      `api/my-questions/${collectionID}/${questions[currentQuestion].original_question}/`,
-      q
+      `api/my-questions/${collectionID}/${questions[currentQuestion].id}/`,
+      { q }
     );
 
-    if (currentQuestion + 2 === questions.length) {
+    if (currentQuestion + 1 === questions.length) {
       if (wrongAnswer) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
@@ -66,6 +66,8 @@ const LearnView = () => {
     } else {
       setCurrentQuestion(currentQuestion + 1);
     }
+
+    setAnswered(false);
   };
 
   const showAnswer = () => {
@@ -75,14 +77,23 @@ const LearnView = () => {
   let question = null;
   if (questions.length > 0 && !finished) {
     question = questions[currentQuestion].question;
+  } else if (finished) {
+    question = 'FINISHED';
   }
 
   let showAnswerButton = null;
   if (!answered && !finished) {
     showAnswerButton = (
-      <button type="button" onClick={showAnswer}>
-        Show Answer
-      </button>
+      <div id="show-answer-btn-container">
+        <button
+          type="button"
+          onClick={showAnswer}
+          id="show-answer-btn"
+          className="btn"
+        >
+          Show Answer
+        </button>
+      </div>
     );
   }
 
@@ -100,32 +111,34 @@ const LearnView = () => {
         type="button"
         id={`${buttonName.toLowerCase().replace(' ', '-')}-btn`}
         onClick={handleClick}
-        className="btn"
+        className="answer-button btn"
         name={`${buttonName.toLowerCase().replace(' ', '-')}`}
       >
         {buttonName}
       </button>
     ));
+    answerButtons = <div id="answer-btns-container">{answerButtons}</div>;
   }
 
   let returnButton = null;
   if (finished) {
     returnButton = (
-      <Link to="/my-collections" className="dark link">
-        <button type="button" className="btn" id="return-btn">
-          Return To My Collections
-        </button>
-      </Link>
+      <div id="return-btn-container">
+        <Link to="/my-collections" className="dark link">
+          <button type="button" className="btn" id="return-btn">
+            Return To My Collections
+          </button>
+        </Link>
+      </div>
     );
   }
 
   return (
     <div id="learn-view-container">
-      {question}
-      <br />
+      <div id="question">{question}</div>
+      <div id="answer">{answer}</div>
       {showAnswerButton}
-      {answer}
-      <div id="answer-buttons">{answerButtons}</div>
+      {answerButtons}
       {returnButton}
     </div>
   );
