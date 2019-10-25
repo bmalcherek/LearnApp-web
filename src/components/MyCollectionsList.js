@@ -36,6 +36,7 @@ const MyCollectionList = () => {
             className="btn"
             type="button"
             id="learn-btn"
+            disabled={!(collection.to_learn > 0)}
           >
             Learn
           </button>

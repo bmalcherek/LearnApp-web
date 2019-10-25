@@ -87,6 +87,10 @@ ul {
   background-color: var(--secondary-color-dark, pink);
 }
 
+.btn:disabled {
+  background-color: var(--border-color, pink);
+}
+
 .dropdown {
   position: relative;
   display: inline-block;

@@ -22,5 +22,7 @@
 }
 
 #my-collections-list {
+  display: grid;
+  grid-auto-rows: minmax(40px, auto);
   padding-left: 10px;
 }
