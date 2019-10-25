@@ -39,7 +39,11 @@ export default function CollectionList() {
 
   return (
     <div id="collection-list-component">
+      <div id="collections-header">
+        <h3>Collections</h3>
+      </div>
       <div id="collections-options">
+        <h5>Options</h5>
         <button className="btn" id="create-new-collection-btn" type="button">
           <Link className="link dark" to="/create-new-collection">
             Create new colletion

@@ -34,7 +34,12 @@ const UserInfo = () => {
     </Link>
   );
   if (auth) {
-    content = username;
+    content = (
+      <div id="username">
+        <i className="fas fa-user" />
+        {username}
+      </div>
+    );
   }
   return (
     <div id="user-info">

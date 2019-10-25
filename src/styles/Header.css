@@ -12,6 +12,7 @@
   flex: wrap;
   align-items: center;
   justify-content: center;
+  transition: all 0.4s;
 }
 
 .header-links:hover {

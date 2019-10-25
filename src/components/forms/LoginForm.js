@@ -13,6 +13,7 @@ const LoginForm = props => {
   const [user, setUser] = useState('');
   const [passwd, setPasswd] = useState('');
   const [stayLoggedIn, setStayLoggedIn] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = () => {
     const loginData = {
@@ -23,18 +24,20 @@ const LoginForm = props => {
     const res = postData('rest-auth/login/', loginData);
     res
       .then(data => {
-        setAuth(true);
-        setUsername(user);
-        setStayAuth(stayLoggedIn);
         if (stayLoggedIn) {
-          localStorage.setItem('stayAuth', true);
           localStorage.setItem('token', data.data.key);
+          localStorage.setItem('stayAuth', true);
         } else {
           sessionStorage.setItem('token', data.data.key);
         }
+        setUsername(user);
+        setStayAuth(stayLoggedIn);
+        setAuth(true);
       })
-      .catch(err => console.log(err));
-    props.history.push('/');
+      .then(() => {
+        props.history.push('/');
+      })
+      .catch(err => setError(err.message));
   };
 
   const handleChange = event => {
@@ -49,12 +52,13 @@ const LoginForm = props => {
         setStayLoggedIn(event.target.checked);
         break;
       default:
-        console.log('error');
+        setError('error');
     }
   };
 
   return (
     <div id="login-form-container" className="content">
+      {error}
       <form id="login-form">
         <span id="username-text">Username:</span>
         <input

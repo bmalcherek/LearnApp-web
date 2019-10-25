@@ -26,8 +26,24 @@
   border-bottom-color: var(--border-color, pink);
   align-items: center;
   padding: 5px;
+  transition: all 0.4s;
 }
 
 .collection-list-element:hover {
   background-color: var(--background-color-hovered, pink);
+}
+
+#collections-header {
+  border-bottom: solid 1px;
+  border-color: var(--border-color, pink);
+}
+
+#collections-options {
+  margin-top: 5px;
+  border-bottom: solid 2px;
+  border-color: var(--border-color, pink);
+}
+
+#collections-options h5 {
+  margin: 7px 0;
 }

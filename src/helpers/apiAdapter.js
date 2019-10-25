@@ -3,7 +3,6 @@ import axios from 'axios';
 import { getItem } from './index';
 
 export const fetchData = async path => {
-  console.log(process.env.REACT_APP_API_URL);
   const url = `${process.env.REACT_APP_API_URL}${path}`;
   const token = getItem('token');
   axios.defaults.headers = {

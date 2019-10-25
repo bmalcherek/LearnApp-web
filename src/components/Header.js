@@ -13,6 +13,7 @@ export default function Header() {
     myCollections = (
       <div id="my-collections-link" className="header-links">
         <Link to="/my-collections" className="link dark">
+          <i className="fas fa-book-reader" />
           My Collections
         </Link>
       </div>
@@ -29,6 +30,7 @@ export default function Header() {
 
       <div id="collections-link" className="header-links">
         <Link className="link dark" to="/collections">
+          <i className="fas fa-book-open" />
           Collections
         </Link>
       </div>
