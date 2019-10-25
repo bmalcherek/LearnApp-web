@@ -8,14 +8,16 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router": "^5.1.0",
-    "react-router-dom": "^5.1.0"
+    "react-router-dom": "^5.1.0",
+    "react-scripts": "^3.1.2"
   },
   "engines": {
     "node": "12.13.0",
     "npm": "6.12.0"
   },
   "scripts": {
-    "start": "REACT_APP_API_URL=http://localhost:8000/ react-scripts start",
+    "devStart": "REACT_APP_API_URL=http://localhost:8000/ react-scripts start",
+    "start": "REACT_APP_API_URL=https://learn-app-api.herokuapp.com/ react-scripts build",
     "build": "REACT_APP_API_URL=https://learn-app-api.herokuapp.com/ react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -46,7 +48,6 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "^1.18.2",
-    "react-scripts": "^3.1.2"
+    "prettier": "^1.18.2"
   }
 }
