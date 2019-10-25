@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { postData } from '../../helpers';
 import { useAuthValue } from '../../context';
 
+import '../../styles/LoginForm.css';
+
 const LoginForm = props => {
   const { setAuth, setUsername, setStayAuth } = useAuthValue();
 
@@ -52,30 +54,52 @@ const LoginForm = props => {
   };
 
   return (
-    <div id="login-form-container">
+    <div id="login-form-container" className="content">
       <form id="login-form">
-        Username:
-        <input type="text" name="user" value={user} onChange={handleChange} />
+        <span id="username-text">Username:</span>
+        <input
+          type="text"
+          name="user"
+          placeholder="Enter username:"
+          value={user}
+          onChange={handleChange}
+        />
         Password:
         <input
           type="password"
           name="passwd"
+          placeholder="Enter password:"
           value={passwd}
           onChange={handleChange}
         />
-        Stay logged in?
-        <input
-          type="checkbox"
-          name="stay-logged-in"
-          value={stayLoggedIn}
-          onChange={handleChange}
-        />
-        <button className="btn" type="button" onClick={handleSubmit}>
-          Submit
+        <button
+          className="btn"
+          type="button"
+          onClick={handleSubmit}
+          id="submit-btn"
+        >
+          Login
         </button>
+        <div id="remember-me">
+          <input
+            type="checkbox"
+            name="stay-logged-in"
+            value={stayLoggedIn}
+            onChange={handleChange}
+          />
+          Remember me
+        </div>
+        <div id="registration">
+          Don't have an account?
+          <Link
+            to="/registration"
+            className="link light"
+            id="registration-link"
+          >
+            Click Here
+          </Link>
+        </div>
       </form>
-      {`Don't have an account?`}
-      <Link to="/registration"> Click Here</Link>
     </div>
   );
 };
