@@ -19,7 +19,8 @@
     "start": "REACT_APP_API_URL=http://localhost:8000/ react-scripts start",
     "build": "REACT_APP_API_URL=https://learn-app-api.herokuapp.com/ react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
