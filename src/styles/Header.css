@@ -22,3 +22,7 @@
 #user-info {
   grid-column: -2/-1;
 }
+
+.header-icon {
+  margin-right: 5px;
+}

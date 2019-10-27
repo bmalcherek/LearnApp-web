@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { useAuthValue } from '../context';
 import logout from '../helpers/logout';
@@ -36,7 +38,7 @@ const UserInfo = () => {
   if (auth) {
     content = (
       <div id="username">
-        <i className="fas fa-user" />
+        <FontAwesomeIcon className="header-icon" icon={faUser} />
         {username}
       </div>
     );

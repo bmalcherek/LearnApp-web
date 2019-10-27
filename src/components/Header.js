@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookOpen, faBookReader } from '@fortawesome/free-solid-svg-icons';
 
 import UserInfo from './UserInfo';
 import { useAuthValue } from '../context';
@@ -13,7 +15,7 @@ export default function Header() {
     myCollections = (
       <div id="my-collections-link" className="header-links">
         <Link to="/my-collections" className="link dark">
-          <i className="fas fa-book-reader" />
+          <FontAwesomeIcon className="header-icon" icon={faBookReader} />
           My Collections
         </Link>
       </div>
@@ -30,7 +32,7 @@ export default function Header() {
 
       <div id="collections-link" className="header-links">
         <Link className="link dark" to="/collections">
-          <i className="fas fa-book-open" />
+          <FontAwesomeIcon className="header-icon" icon={faBookOpen} />
           Collections
         </Link>
       </div>

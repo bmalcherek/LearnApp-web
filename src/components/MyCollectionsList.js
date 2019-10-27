@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchData, deleteItem } from '../helpers';
 
@@ -48,7 +50,7 @@ const MyCollectionList = () => {
           className="btn"
           name={collection.id}
         >
-          <i className="far fa-trash-alt" />
+          <FontAwesomeIcon icon={faTrashAlt} />
         </button>
       </div>
     </li>
