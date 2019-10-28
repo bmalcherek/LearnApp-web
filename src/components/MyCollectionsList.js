@@ -4,17 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchData, deleteItem } from '../helpers';
+import Skeleton from './loading/Skeleton';
 
 import '../styles/MyCollectionList.css';
 
 const MyCollectionList = () => {
   const [collections, setCollections] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const skeletonAmount = 10;
+  const skeletonsList = [];
+  let skeletons = null;
 
   useEffect(() => {
+    setLoading(true);
     const response = fetchData('api/my-collections/');
     response
-      .then(res => setCollections(res.data))
+      .then(res => {
+        setCollections(res.data);
+        setLoading(false);
+      })
       .catch(err => console.log(err));
 
     setEdit(false);
@@ -26,6 +36,17 @@ const MyCollectionList = () => {
     );
     response.then(() => setEdit(true));
   };
+
+  if (loading) {
+    for (let i = 0; i < skeletonAmount; i += 1) {
+      skeletonsList.push(
+        <li id="skeleton-list-element" key={i}>
+          <Skeleton height="14px" />
+        </li>
+      );
+    }
+    skeletons = <ul id="skeleton-list">{skeletonsList}</ul>;
+  }
 
   const collectionList = collections.map(collection => (
     <li className="collection-list-element" key={collection.id}>
@@ -63,6 +84,7 @@ const MyCollectionList = () => {
           <h3>My collections</h3>
         </div>
       </div>
+      {skeletons}
       <ul id="my-collections-list">{collectionList}</ul>
     </div>
   );

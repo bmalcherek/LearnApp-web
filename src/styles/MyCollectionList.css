@@ -21,7 +21,8 @@
   margin-bottom: 5px;
 }
 
-#my-collections-list {
+#my-collections-list,
+#skeleton-list {
   display: grid;
   grid-auto-rows: minmax(40px, auto);
   padding-left: 10px;

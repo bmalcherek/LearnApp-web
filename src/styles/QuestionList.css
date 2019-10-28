@@ -1,11 +1,13 @@
-#question-list {
+#question-list,
+#skeleton-list {
   display: grid;
   grid-auto-rows: minmax(40px, auto);
   padding: 0;
   align-content: center;
 }
 
-.question-list-element {
+.question-list-element,
+#skeleton-list-element {
   display: inline-block;
   padding: 5px;
   padding-left: 10px;

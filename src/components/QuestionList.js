@@ -5,19 +5,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchData, deleteItem } from '../helpers';
+import Skeleton from './loading/Skeleton';
 
 import '../styles/QuestionList.css';
 
 const QuestionList = props => {
   const [questions, setQuestions] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { collectionID } = props;
 
+  const skeletonAmount = 10;
+  const skeletonsList = [];
+  let skeletons = null;
+
   useEffect(() => {
+    setLoading(true);
     const response = fetchData(`api/questions/${collectionID}/`);
     response.then(res => {
       setQuestions(res.data);
       setEdit(false);
+      setLoading(false);
     });
   }, [collectionID, edit]);
 
@@ -27,6 +35,17 @@ const QuestionList = props => {
     );
     response.then(() => setEdit(true));
   };
+
+  if (loading) {
+    for (let i = 0; i < skeletonAmount; i += 1) {
+      skeletonsList.push(
+        <li id="skeleton-list-element" key={i}>
+          <Skeleton height="14px" />
+        </li>
+      );
+    }
+    skeletons = <ul id="skeleton-list">{skeletonsList}</ul>;
+  }
 
   const listElements = questions.map(question => (
     <li className="question-list-element" key={question.id}>
@@ -62,6 +81,7 @@ const QuestionList = props => {
 
   return (
     <div id="question-list-container">
+      {skeletons}
       <ul id="question-list">{listElements}</ul>
     </div>
   );
