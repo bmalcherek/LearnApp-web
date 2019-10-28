@@ -18,7 +18,7 @@
 .skeleton {
   border-radius: 15px;
   animation: flow 5s ease-in-out infinite;
-  background: linear-gradient(90deg, #ccc, #eee);
+  background: linear-gradient(90deg, #c0c0c0, #eee);
   background-size: 300%;
 }
 

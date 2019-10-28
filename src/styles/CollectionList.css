@@ -49,3 +49,11 @@
 #collections-options h5 {
   margin: 7px 0;
 }
+
+#star-rating {
+  margin-left: 5px;
+}
+
+#star-icon {
+  color: gold;
+}

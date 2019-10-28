@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 import { fetchData, postData } from '../helpers';
 import Skeleton from './loading/Skeleton';
@@ -48,6 +50,13 @@ export default function CollectionList() {
       <Link className="link light" to={`/collections/${collection.id}`}>
         {collection.name}
       </Link>
+      <div id="star-rating">
+        <span id="star-icon">
+          <FontAwesomeIcon icon={faStar} id="star-icon" />
+        </span>
+        {collection.rating}
+      </div>
+      {}
       <button
         className="btn add-to-my-collections-btn"
         name={collection.id}
@@ -58,6 +67,8 @@ export default function CollectionList() {
       </button>
     </li>
   ));
+
+  console.log(collections);
 
   return (
     <div id="collection-list-component">
