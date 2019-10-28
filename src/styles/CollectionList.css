@@ -2,7 +2,8 @@
   grid-area: content;
 }
 
-#collection-list {
+#collection-list,
+#skeleton-list {
   display: grid;
   grid-auto-rows: minmax(50px, auto);
 
@@ -20,7 +21,8 @@
   right: 20%;
 }
 
-.collection-list-element {
+.collection-list-element,
+#skeleton-list-element {
   display: flex;
   border-bottom: solid 1px;
   border-bottom-color: var(--border-color, pink);

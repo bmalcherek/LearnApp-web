@@ -1,0 +1,22 @@
+#skeleton-big {
+  width: 70%;
+}
+
+#skeleton-medium {
+  width: 45%;
+}
+
+#skeleton-small {
+  width: 20%;
+}
+
+#skeleton-container {
+  width: 100%;
+  height: 100%;
+}
+
+.skeleton {
+  border-radius: 15px;
+  background-color: var(--background-color-hovered, pink);
+  height: 20px;
+}

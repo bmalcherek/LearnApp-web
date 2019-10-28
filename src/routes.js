@@ -11,6 +11,7 @@ import LoginForm from './components/forms/LoginForm';
 import MyCollectionsList from './components/MyCollectionsList';
 import RegistrationForm from './components/forms/RegistrationForm';
 import LearnView from './components/LearnView';
+import Skeleton from './components/loading/Skeleton';
 
 const BaseRouter = () => (
   <div id="router" className="content">
@@ -50,6 +51,7 @@ const BaseRouter = () => (
         // eslint-disable-next-line react/jsx-props-no-spreading
         component={props => <QuestionForm {...props} edit />}
       />
+      <Route exact path="/test" component={Skeleton} />
     </Switch>
   </div>
 );

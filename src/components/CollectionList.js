@@ -2,14 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { fetchData, postData } from '../helpers';
+import Skeleton from './loading/Skeleton';
+
 import '../styles/CollectionList.css';
 
 export default function CollectionList() {
   const [collections, setCollections] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const skeletonAmount = 10;
+  const skeletonsList = [];
+  let skeletons = null;
 
   useEffect(() => {
+    setLoading(true);
     const response = fetchData('api/collections/');
-    response.then(res => setCollections(res.data));
+    response.then(res => {
+      setCollections(res.data);
+      setLoading(false);
+    });
   }, []);
 
   const addToMyCollections = event => {
@@ -20,6 +31,17 @@ export default function CollectionList() {
     const response = postData('api/my-collections/', data);
     response.catch(err => console.log(err));
   };
+
+  if (loading) {
+    for (let i = 0; i < skeletonAmount; i += 1) {
+      skeletonsList.push(
+        <li id="skeleton-list-element" key={i}>
+          <Skeleton />
+        </li>
+      );
+    }
+    skeletons = <ul id="skeleton-list">{skeletonsList}</ul>;
+  }
 
   const listElements = collections.map(collection => (
     <li className="collection-list-element" key={collection.name.toString()}>
@@ -50,6 +72,7 @@ export default function CollectionList() {
           </Link>
         </button>
       </div>
+      {skeletons}
       <ul id="collection-list">{listElements}</ul>
     </div>
   );
