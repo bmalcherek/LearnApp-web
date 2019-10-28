@@ -9,13 +9,19 @@ const Skeleton = props => {
   let skeleton;
   switch (props.type) {
     case 'big':
-      skeleton = <div className="skeleton" id="skeleton-big" />;
+      skeleton = (
+        <div
+          className="skeleton"
+          id="skeleton-big"
+          style={{ height: props.height }}
+        />
+      );
       break;
     default:
       skeleton = (
         <div
           className="skeleton"
-          style={{ width: `${getRandomInt(50) + 20}%` }}
+          style={{ width: `${getRandomInt(50) + 20}%`, height: props.height }}
         />
       );
   }
@@ -24,7 +30,13 @@ const Skeleton = props => {
 };
 
 Skeleton.propTypes = {
-  type: PropTypes.string.isRequired
+  type: PropTypes.string,
+  height: PropTypes.string
+};
+
+Skeleton.defaultProps = {
+  type: '',
+  height: '20px'
 };
 
 export default Skeleton;

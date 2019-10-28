@@ -36,7 +36,7 @@ export default function CollectionList() {
     for (let i = 0; i < skeletonAmount; i += 1) {
       skeletonsList.push(
         <li id="skeleton-list-element" key={i}>
-          <Skeleton />
+          <Skeleton height="14px" />
         </li>
       );
     }

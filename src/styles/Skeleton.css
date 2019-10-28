@@ -17,6 +17,21 @@
 
 .skeleton {
   border-radius: 15px;
-  background-color: var(--background-color-hovered, pink);
-  height: 20px;
+  animation: flow 5s ease-in-out infinite;
+  background: linear-gradient(90deg, #ccc, #eee);
+  background-size: 300%;
+}
+
+@keyframes flow {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
 }
